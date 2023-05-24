@@ -1,0 +1,32 @@
+.idea
+tags
+tags.lock
+*.whl
+.DS_Store
+*.sqlite3
+*.pyc
+artifacts/test/*
+artifacts/coverage/*
+*.xml
+.coverage
+.coveragerc
+/cover
+
+# Sphinx build files
+/build
+build
+build/*
+
+# Build temp files
+dist
+*.egg-info
+.eggs/
+
+# Tox files
+/.tox
+report
+v[0-9]
+v[0-9][0-9]
+
+cmake-build-debug
+*.o
