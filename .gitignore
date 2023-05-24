@@ -30,3 +30,17 @@ v[0-9][0-9]
 
 cmake-build-debug
 *.o
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+cmake_build*
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+venv

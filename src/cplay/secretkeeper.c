@@ -1,18 +1,9 @@
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include <fileutils.h>
-#include <pylifecycle.h>
-#include <pythonrun.h>
 
-static PyObject *
+
+static PyObject * 
 greet_name(PyObject *self, PyObject *args) {
-    const char *name;
-
-    if (!PyArg_ParseTuple(args, "s", &name)) {
-            return NULL;
-    }
-
-    printf("Hello %s", name);
-
     Py_RETURN_NONE;
 }
 

@@ -16,9 +16,7 @@ greet_name(PyObject *self, PyObject *args) {
             return NULL;
     }
 
-    //PyObject_Print(self, stdout, 0);
-
-    printf("Hello %s", name);
+    printf("Hello %s\n", name);
 
     Py_RETURN_NONE;
 }
@@ -55,23 +53,30 @@ int main(int argc, char *argv[]) {
     Py_SetProgramName(program);
     Py_Initialize();
 
+    // MANUALLY IMPORT MODULE (not needed if we build extension module
     PyObject *pmodule = PyImport_ImportModule("greet");
     if (!pmodule) {
         PyErr_Print();
         fprintf(stderr, "couldn't do the thing");
+    } else {
+        fprintf(stdout, "successfully manually imported lib: ");
+        PyObject_Print(pmodule, stdout, 0);
+        fprintf(stdout, "\n");
     }
-    PyRun_SimpleString("greet()");
+
+    // MANUAL CALL
+    PyObject * tuple_str = Py_BuildValue("(s)", "test string");
+    greet_name(pmodule, tuple_str);
+    uintmax_t i = _Py_IMMORTAL_REFCNT;
 
 
+    // why doesn't this work when we've confirmed import and below works
+    // PyRun_SimpleString("greet.greet('ari')");
+    PyRun_SimpleString("import greet; greet.greet('hello')");
 
     if (Py_FinalizeEx() < 0) {
         exit(120);
     }
-
-    //PyObject *s = Py_BuildValue("s", "testing building a python string");
-
-
-
     PyMem_RawFree(program);
     
     return 0;
